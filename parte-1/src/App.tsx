@@ -33,23 +33,23 @@ const ASSETS = {
     zoom: 'https://www.figma.com/api/mcp/asset/5e3ec3f7-e188-475b-9613-5286a9eb6b45',
   },
   illustration: {
-    seo: 'https://www.figma.com/api/mcp/asset/3270625d-16c6-4924-9cdc-6e4294c98942',
-    ppc: 'https://www.figma.com/api/mcp/asset/5349a2f8-f85d-4b07-8c41-20df4c6095e4',
-    social: 'https://www.figma.com/api/mcp/asset/6c1a9f8e-d958-42c1-bcd2-dab5a99d7a71',
-    email: 'https://www.figma.com/api/mcp/asset/e57a1fe5-381b-41dc-b235-2c78e07a45b0',
-    content: 'https://www.figma.com/api/mcp/asset/2a9fa846-77aa-4670-abca-192ec62d3146',
-    analytics: 'https://www.figma.com/api/mcp/asset/a5587c3b-4f3c-4490-b176-c5531c033ecc',
-    cta: 'https://www.figma.com/api/mcp/asset/cc92c7b6-c576-4558-8731-4f4870384ce6',
+    seo: '/illustration-1.svg',
+    ppc: '/illustration-2.svg',
+    social: '/illustration-3.svg',
+    email: '/illustration-4.svg',
+    content: '/illustration-5.svg',
+    analytics: '/illustration-6.svg',
+    cta: '/illustration-7.svg',
   },
   arrowGreen: 'https://www.figma.com/api/mcp/asset/47cc36c9-5dea-4f4b-a073-70ccca239c18',
   arrowBlack: 'https://www.figma.com/api/mcp/asset/f8073bf8-e4c6-4a60-b6a5-f9fec0bbb606',
   team: {
-    john: 'https://www.figma.com/api/mcp/asset/36015b20-e728-40d9-bcd2-9ad26d4a7709',
-    jane: 'https://www.figma.com/api/mcp/asset/f962dddc-becb-49a3-8b89-0c2f09935db5',
-    michael: 'https://www.figma.com/api/mcp/asset/9f65c72b-f407-49a3-920e-a4425bf69ed2',
-    emily: 'https://www.figma.com/api/mcp/asset/2a327175-070d-4ae5-a6c3-b5497080fd2f',
-    brian: 'https://www.figma.com/api/mcp/asset/8a365d4a-ec7c-4fbe-9827-0ead50681520',
-    sarah: 'https://www.figma.com/api/mcp/asset/9c05995b-fa9d-4c1d-a207-c223bb082f0a',
+    john: '/photo-1.svg',
+    jane: '/photo-2.svg',
+    michael: '/photo-3.svg',
+    emily: '/photo-4.svg',
+    brian: '/photo-5.svg',
+    sarah: '/photo-6.svg',
   },
   socialIcon: 'https://www.figma.com/api/mcp/asset/e988922b-3ae9-461d-8a93-a5fccbde3527',
   arrowLeft: 'https://www.figma.com/api/mcp/asset/ecd7b43b-3b2e-4abc-a5ac-fa8c708c9b56',
@@ -63,7 +63,7 @@ const ASSETS = {
 
 function SectionLabel({ text }: { text: string }) {
   return (
-    <span className="bg-[#b9ff66] text-[#191a23] font-medium text-[40px] px-2 rounded-[7px] leading-none">
+    <span className="bg-[#b9ff66] text-[#191a23] font-medium text-[40px] px-3 rounded-[7px] leading-none">
       {text}
     </span>
   )
@@ -71,9 +71,9 @@ function SectionLabel({ text }: { text: string }) {
 
 function SectionHeading({ label, description }: { label: string; description: string }) {
   return (
-    <div className="flex items-start gap-10 mb-16">
+    <div className="flex items-center gap-10 mb-16">
       <SectionLabel text={label} />
-      <p className="text-[18px] leading-[1.55] text-[#191a23] max-w-[580px] mt-2">{description}</p>
+      <p className="text-[18px] leading-[1.55] text-[#191a23] max-w-[580px] whitespace-pre-line">{description}</p>
     </div>
   )
 }
@@ -121,8 +121,8 @@ function Navbar() {
             {link}
           </a>
         ))}
-        <button className="border border-[#191a23] border-solid flex items-start px-[35px] py-[20px] rounded-[14px] hover:bg-[#191a23] hover:text-white transition-colors">
-          <span className="font-normal leading-[28px] text-[20px] text-black text-center whitespace-nowrap">
+        <button className="group border border-[#191a23] border-solid flex items-start px-[35px] py-[20px] rounded-[14px] hover:bg-[#191a23] transition-colors">
+          <span className="font-normal leading-[28px] text-[20px] text-[#191a23] group-hover:text-white text-center whitespace-nowrap">
             {CONTENT.navbar.cta}
           </span>
         </button>
@@ -240,7 +240,7 @@ function Hero() {
 function LogosSection() {
   const v = ASSETS.logoVectors
   return (
-    <section className="flex items-start justify-between overflow-clip px-[100px] py-[60px] border-y border-[#191a23] w-full">
+    <section className="flex items-start justify-between overflow-clip px-[100px] py-[60px] w-full">
       {/* Amazon — two vector layers */}
       <div className="h-[48px] mix-blend-luminosity overflow-clip relative shrink-0 w-[124.113px]">
         <div className="absolute inset-[66.48%_33.16%_6.25%_14.01%]">
@@ -298,7 +298,7 @@ type ServiceCardProps = {
 
 function ServiceCard({ bg, title, illustration, illustrationClass }: ServiceCardProps) {
   const bgMap = { gray: 'bg-[#f3f3f3]', green: 'bg-[#b9ff66]', dark: 'bg-[#191a23]' }
-  const labelBg = bg === 'gray' ? 'bg-[#b9ff66]' : bg === 'green' ? 'bg-white' : 'bg-[#b9ff66]'
+  const labelBg = bg === 'gray' ? 'bg-[#b9ff66]' : bg === 'green' ? 'bg-white' : 'bg-white'
   const linkColor = bg === 'dark' ? 'text-white' : 'text-[#191a23]'
 
   return (
@@ -314,13 +314,11 @@ function ServiceCard({ bg, title, illustration, illustrationClass }: ServiceCard
           ))}
         </div>
         <div className="flex items-center gap-[15px]">
-          {bg === 'dark' ? (
-            <div className="w-[41px] h-[41px] rounded-full bg-[#b9ff66] flex items-center justify-center flex-shrink-0 overflow-hidden">
-              <img src={ASSETS.arrowBlack} alt="" className="w-[41px] h-[41px] object-contain" />
-            </div>
-          ) : (
-            <img src={ASSETS.arrowBlack} alt="" className="w-[41px] h-[41px]" />
-          )}
+          <img
+            src={ASSETS.arrowBlack}
+            alt=""
+            className={`w-[41px] h-[41px] ${bg === 'dark' ? 'invert' : ''}`}
+          />
           <span className={`${linkColor} text-[20px] leading-[28px]`}>{CONTENT.services.learnMore}</span>
         </div>
       </div>
@@ -343,7 +341,7 @@ function ServicesSection() {
     ASSETS.illustration.analytics,
   ]
   const bgs: ServiceCardProps['bg'][] = ['gray', 'green', 'dark', 'gray', 'green', 'dark']
-  const illustrationClasses = ['', '', '', 'scale-x-[-1]', '', '']
+  const illustrationClasses = ['', '', '', '', '', '']
 
   const services: ServiceCardProps[] = CONTENT.services.items.map((item, i) => ({
     bg: bgs[i],
@@ -372,8 +370,8 @@ function ServicesSection() {
 function CTABlock() {
   return (
     <section className="px-[100px] pt-[70px] pb-[100px]">
-      <div className="bg-[#f3f3f3] rounded-[45px] px-[60px] py-[60px] flex items-center justify-between" style={{ minHeight: '280px' }}>
-        <div className="flex flex-col gap-[26px] max-w-[500px]">
+      <div className="bg-[#f3f3f3] rounded-[45px] px-[60px] py-[60px] relative flex items-center justify-between overflow-visible">
+        <div className="flex flex-col gap-[26px] max-w-[500px] relative z-10">
           <h3 className="font-medium text-[30px] text-[#191a23] leading-[1.3]">
             {CONTENT.cta.heading}
           </h3>
@@ -387,7 +385,7 @@ function CTABlock() {
         <img
           src={ASSETS.illustration.cta}
           alt=""
-          className="h-[370px] w-auto flex-shrink-0 object-contain translate-y-[60px]"
+          className="absolute right-[60px] top-1/2 -translate-y-1/2 w-auto h-[400px] object-contain pointer-events-none"
         />
       </div>
     </section>
@@ -489,21 +487,22 @@ const TEAM: TeamMember[] = CONTENT.team.members.map((m, i) => ({
   photo: teamPhotos[i],
 }))
 
-function TeamCard({ member }: { member: TeamMember }) {
+function TeamCard({ member, heightClass }: { member: TeamMember, heightClass?: string }) {
+  const hClass = heightClass || 'h-[331px] min-h-[331px]'
   return (
-    <div className="bg-white border border-[#191a23] rounded-[45px] shadow-[0_5px_0_0_#191a23] px-[35px] py-[40px] w-[387px]">
-      <div className="flex items-end gap-5 mb-[28px]">
-        <div className="w-[106px] h-[106px] rounded-full overflow-hidden flex-shrink-0 bg-[#b9ff66]">
-          <img src={member.photo} alt={member.name} className="w-full h-full object-cover mix-blend-multiply" />
+    <div className={`bg-white border border-[#191a23] rounded-[45px] shadow-[0_5px_0_0_#191a23] px-[35px] py-[40px] w-[387px] min-w-[387px] flex flex-col ${hClass}`}>
+      <div className="flex items-end gap-5 mb-[20px] relative">
+        <div className="w-[106px] h-[106px] flex-shrink-0">
+          <img src={member.photo} alt={member.name} className="w-full h-full object-contain" />
         </div>
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 pb-[2px]">
           <span className="font-medium text-[20px] text-[#191a23] leading-normal">{member.name}</span>
           <span className="text-[18px] text-[#191a23] leading-normal">{member.role}</span>
         </div>
-        <img src={ASSETS.socialIcon} alt={CONTENT.team.linkedInAlt} className="w-[34px] h-[34px] flex-shrink-0 self-start" />
+        <img src={ASSETS.socialIcon} alt={CONTENT.team.linkedInAlt} className="w-[34px] h-[34px] flex-shrink-0 absolute right-0 top-0" />
       </div>
-      <hr className="border-[#191a23] mb-[28px]" />
-      <p className="text-[18px] text-[#191a23] leading-[1.55]">{member.bio}</p>
+      <hr className="border-[#191a23] mb-[20px]" />
+      <p className="text-[18px] text-[#191a23] leading-snug whitespace-pre-line">{member.bio}</p>
     </div>
   )
 }
@@ -517,14 +516,14 @@ function TeamSection() {
       />
       <div className="flex flex-col gap-10">
         <div className="flex gap-10">
-          {TEAM.slice(0, 3).map((m) => <TeamCard key={m.name} member={m} />)}
+          {TEAM.slice(0, 3).map((m) => <TeamCard key={m.name} member={m} heightClass="h-[331px] min-h-[331px]" />)}
         </div>
         <div className="flex gap-10">
-          {TEAM.slice(3).map((m) => <TeamCard key={m.name} member={m} />)}
+          {TEAM.slice(3).map((m) => <TeamCard key={m.name} member={m} heightClass="h-[354px] min-h-[354px]" />)}
         </div>
       </div>
       <div className="flex justify-end mt-10">
-        <button className="border border-[#191a23] rounded-[14px] px-[35px] py-5 text-[20px] text-[#191a23] hover:bg-[#191a23] hover:text-white transition-colors">
+        <button className="bg-[#191a23] text-white rounded-[14px] w-[269px] h-[68px] text-[20px] leading-[28px] hover:bg-[#2d2e3a] transition-colors">
           {CONTENT.team.seeAll}
         </button>
       </div>
@@ -537,46 +536,83 @@ function TeamSection() {
 function TestimonialsSection() {
   const [current, setCurrent] = useState(0)
   const items = CONTENT.testimonials.items
+  
+  // Clone items for infinite loop effect
+  const displayItems = [
+    items[items.length - 2],
+    items[items.length - 1],
+    ...items,
+    items[0],
+    items[1]
+  ]
+  const startIndex = 2
 
   return (
-    <section className="px-[100px] py-[70px]">
+    <section className="px-[100px] py-[70px] w-[1440px] mx-auto">
       <SectionHeading
         label={CONTENT.testimonials.label}
         description={CONTENT.testimonials.description}
       />
-      <div className="bg-[#191a23] rounded-[45px] px-[100px] py-[70px] relative overflow-hidden">
-        <div className="max-w-[876px]">
-          <div className="border border-[#b9ff66] rounded-[45px] p-[48px] relative">
-            <p className="text-[18px] text-white leading-[1.55] mb-8">
-              "{items[current].text}"
-            </p>
-            <div>
-              <p className="font-medium text-[#b9ff66] text-[20px]">{items[current].name}</p>
-              <p className="text-white text-[18px]">{items[current].role}</p>
-            </div>
+      <div className="bg-[#191a23] rounded-[45px] relative overflow-hidden flex flex-col items-center w-full h-[625px]">
+        
+        <div className="w-full absolute top-[84px] overflow-visible">
+          <div
+            className="flex gap-[50px] transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(calc(320px - ${(current + startIndex) * 650}px))`
+            }}
+          >
+            {displayItems.map((item, i) => (
+              <div key={i} className="w-[600px] flex-shrink-0 flex flex-col">
+                <div className="border border-[#b9ff66] rounded-[45px] p-[50px] relative bg-[#191a23] mb-[24px]">
+                  <p className="text-[18px] text-white leading-[1.55]">
+                    "{item.text}"
+                  </p>
+                  <svg className="absolute -bottom-[25px] left-[60px] overflow-visible" width="50" height="26" viewBox="0 0 50 26">
+                    <path d="M0,0 L25,25 L50,0" stroke="#b9ff66" strokeWidth="1" fill="#191a23" />
+                    <line x1="1" y1="0" x2="49" y2="0" stroke="#191a23" strokeWidth="2" />
+                  </svg>
+                </div>
+                <div className="pl-[85px] pt-2 flex flex-col gap-1">
+                  <span className="text-[#b9ff66] font-medium text-[20px] leading-none">{item.name}</span>
+                  <span className="text-white text-[18px] leading-none">{item.role}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="flex items-center gap-[28px] mt-[124px]">
+
+        <div className="absolute bottom-[68px] flex items-center justify-between w-[500px]">
           <button
             onClick={() => setCurrent((c) => (c - 1 + items.length) % items.length)}
-            className="hover:opacity-70 transition-opacity"
+            className="text-white hover:opacity-70 transition-opacity"
           >
-            <img src={ASSETS.arrowLeft} alt={CONTENT.testimonials.prevAlt} className="w-[65px] h-auto" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 12H4M4 12L10 6M4 12L10 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
-          <div className="flex gap-3">
+          
+          <div className="flex gap-[20px]">
             {items.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`w-[14px] h-[14px] rounded-full border border-white transition-colors ${i === current ? 'bg-white' : 'bg-transparent'}`}
-              />
+                className="hover:opacity-80 transition-opacity"
+              >
+                <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 0 0 Q 7 6 14 0 Q 8 7 14 14 Q 7 8 0 14 Q 6 7 0 0 Z" fill={i === current ? "#b9ff66" : "white"} />
+                </svg>
+              </button>
             ))}
           </div>
+
           <button
             onClick={() => setCurrent((c) => (c + 1) % items.length)}
-            className="hover:opacity-70 transition-opacity"
+            className="text-white hover:opacity-70 transition-opacity"
           >
-            <img src={ASSETS.arrowRight} alt={CONTENT.testimonials.nextAlt} className="w-[65px] h-auto" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </div>
       </div>
@@ -591,68 +627,67 @@ function ContactSection() {
   const { form } = CONTENT.contact
 
   return (
-    <section id="contact" className="px-[100px] py-[70px]">
+    <section id="contact" className="px-[100px] py-[70px] w-full max-w-[1440px] mx-auto">
       <SectionHeading
         label={CONTENT.contact.label}
         description={CONTENT.contact.description}
       />
-      <div className="bg-[#f3f3f3] rounded-[45px] px-[100px] py-[60px] flex items-start justify-between gap-20 overflow-hidden">
-        <div className="flex flex-col gap-[40px] flex-1 max-w-[556px]">
+      <div className="bg-[#f3f3f3] rounded-[45px] relative overflow-hidden w-full h-[773px] flex items-center pl-[100px]">
+        <div className="flex flex-col gap-[40px] flex-1 max-w-[556px] relative z-10 w-full">
           <div className="flex gap-[35px]">
             <label className="flex items-center gap-3 cursor-pointer">
               <div
-                className={`w-[28px] h-[28px] rounded-full border-2 border-[#191a23] flex items-center justify-center cursor-pointer`}
+                className={`w-[28px] h-[28px] rounded-full border border-[#191a23] flex items-center justify-center cursor-pointer bg-white`}
                 onClick={() => setType('say-hi')}
               >
-                {type === 'say-hi' && <div className="w-[14px] h-[14px] rounded-full bg-[#191a23]" />}
+                {type === 'say-hi' && <div className="w-[16px] h-[16px] rounded-full bg-[#b9ff66]" />}
               </div>
-              <span className="text-[20px] text-[#191a23]">{CONTENT.contact.sayHi}</span>
+              <span className="text-[18px] text-[#191a23] leading-none">{CONTENT.contact.sayHi}</span>
             </label>
             <label className="flex items-center gap-3 cursor-pointer">
               <div
-                className={`w-[28px] h-[28px] rounded-full border-2 border-[#191a23] flex items-center justify-center cursor-pointer`}
+                className={`w-[28px] h-[28px] rounded-full border border-[#191a23] flex items-center justify-center cursor-pointer bg-white`}
                 onClick={() => setType('quote')}
               >
-                {type === 'quote' && <div className="w-[14px] h-[14px] rounded-full bg-[#191a23]" />}
+                {type === 'quote' && <div className="w-[16px] h-[16px] rounded-full bg-[#b9ff66]" />}
               </div>
-              <span className="text-[20px] text-[#191a23]">{CONTENT.contact.getQuote}</span>
+              <span className="text-[18px] text-[#191a23] leading-none">{CONTENT.contact.getQuote}</span>
             </label>
           </div>
 
-          <div className="flex flex-col gap-5">
-            <div className="flex flex-col gap-[14px]">
-              <label className="text-[16px] text-[#191a23]">{form.nameLabel}</label>
+          <div className="flex flex-col gap-[25px]">
+            <div className="flex flex-col gap-[10px]">
+              <label className="text-[16px] text-[#191a23] leading-none">{form.nameLabel}</label>
               <input
                 type="text"
                 placeholder={form.namePlaceholder}
-                className="border border-[#191a23] rounded-[14px] px-[30px] py-5 text-[18px] text-[#191a23] bg-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#b9ff66]"
+                className="border border-[#191a23] rounded-[14px] px-[30px] py-[18px] text-[18px] text-[#191a23] bg-white placeholder-[#898992] outline-none focus:ring-1 focus:ring-[#b9ff66]"
               />
             </div>
-            <div className="flex flex-col gap-[14px]">
-              <label className="text-[16px] text-[#191a23]">{form.emailLabel}</label>
+            <div className="flex flex-col gap-[10px]">
+              <label className="text-[16px] text-[#191a23] leading-none">{form.emailLabel}</label>
               <input
                 type="email"
                 placeholder={form.emailPlaceholder}
-                className="border border-[#191a23] rounded-[14px] px-[30px] py-5 text-[18px] text-[#191a23] bg-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#b9ff66]"
+                className="border border-[#191a23] rounded-[14px] px-[30px] py-[18px] text-[18px] text-[#191a23] bg-white placeholder-[#898992] outline-none focus:ring-1 focus:ring-[#b9ff66]"
               />
             </div>
-            <div className="flex flex-col gap-[14px]">
-              <label className="text-[16px] text-[#191a23]">{form.messageLabel}</label>
+            <div className="flex flex-col gap-[10px]">
+              <label className="text-[16px] text-[#191a23] leading-none">{form.messageLabel}</label>
               <textarea
                 placeholder={form.messagePlaceholder}
-                rows={4}
-                className="border border-[#191a23] rounded-[14px] px-[30px] py-5 text-[18px] text-[#191a23] bg-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#b9ff66] resize-none"
+                className="border border-[#191a23] rounded-[14px] px-[30px] py-[18px] text-[18px] text-[#191a23] bg-white placeholder-[#898992] outline-none focus:ring-1 focus:ring-[#b9ff66] resize-none h-[190px]"
               />
             </div>
           </div>
 
-          <button className="w-full bg-[#191a23] text-white rounded-[14px] px-[35px] py-5 text-[20px] leading-[28px] hover:bg-[#2d2e3a] transition-colors">
+          <button className="w-full bg-[#191a23] text-white rounded-[14px] px-[35px] py-5 text-[20px] leading-[28px] hover:bg-[#2d2e3a] transition-colors mt-[15px]">
             {form.submit}
           </button>
         </div>
 
-        <div className="flex-shrink-0 w-[359px] h-auto">
-          <img src={ASSETS.footerIllustration} alt="" className="w-full h-auto" />
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 pointer-events-none">
+          <img src="/illustration-8.svg" alt="" className="w-[800px] h-auto object-contain" />
         </div>
       </div>
     </section>
@@ -664,49 +699,64 @@ function ContactSection() {
 function Footer() {
   const f = CONTENT.footer
   return (
-    <footer className="bg-[#191a23] px-[100px] pt-[55px] pb-[50px] rounded-t-[45px]">
-      <div className="flex items-center justify-between mb-[66px]">
-        <div className="flex items-center gap-2">
-          <img src={ASSETS.icon} alt={f.logoAlt} className="h-[36px] w-auto brightness-0 invert" />
-          <img src={ASSETS.positivusFooter} alt={f.logoAlt} className="h-[22px] w-auto" />
-        </div>
-        <div className="flex items-center gap-10">
-          {f.links.map((link) => (
-            <a key={link} href="#" className="text-white text-[20px] underline hover:text-[#b9ff66] transition-colors">
-              {link}
+    <footer className="px-[100px] w-full max-w-[1440px] mx-auto">
+      <div className="bg-[#191a23] rounded-t-[45px] overflow-hidden px-[60px] pt-[55px] pb-[50px] flex flex-col min-h-[514px]">
+        {/* Top Row: Logo, Nav, Social */}
+        <div className="flex items-center justify-between mb-[66px]">
+          <img src="/logo-2.svg" alt={f.logoAlt} className="h-[28px] w-auto" />
+          <div className="flex items-center gap-10">
+            {f.links.map((link) => (
+              <a key={link} href="#" className="text-white text-[18px] underline hover:text-[#b9ff66] transition-colors">
+                {link}
+              </a>
+            ))}
+          </div>
+          <div className="flex gap-5">
+            <a href="#" className="w-[30px] h-[30px] rounded-full bg-white flex items-center justify-center hover:opacity-80 transition-opacity">
+              <svg width="16" height="16" fill="#191a23" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
             </a>
-          ))}
+            <a href="#" className="w-[30px] h-[30px] rounded-full bg-white flex items-center justify-center hover:opacity-80 transition-opacity">
+              <svg width="16" height="16" fill="#191a23" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
+            </a>
+            <a href="#" className="w-[30px] h-[30px] rounded-full bg-white flex items-center justify-center hover:opacity-80 transition-opacity">
+              <svg width="16" height="16" fill="#191a23" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg>
+            </a>
+          </div>
         </div>
-        <img src={ASSETS.socialIcons} alt={f.socialAlt} className="h-[34px] w-auto" />
-      </div>
 
-      <div className="flex items-start gap-[134px] mb-[50px]">
-        <div className="bg-[#292a32] rounded-[14px] px-[50px] py-[58px] flex flex-col gap-[27px] max-w-[285px]">
-          <h4 className="font-medium text-[20px] text-[#b9ff66]">{f.contactHeading}</h4>
-          <p className="text-white text-[18px]">{f.contactEmail}</p>
-          <p className="text-white text-[18px]">{f.contactPhone}</p>
-          <p className="text-white text-[18px] whitespace-pre-line">{f.contactAddress}</p>
-        </div>
-        <div className="flex flex-col gap-[22px]">
-          <h4 className="font-medium text-[20px] text-[#b9ff66]">{f.newsletterHeading}</h4>
-          <div className="flex gap-[22px]">
+        {/* Middle Row: Contact & Newsletter */}
+        <div className="flex justify-between items-start">
+          <div className="flex flex-col items-start max-w-[332px]">
+            <span className="bg-[#b9ff66] text-black px-2 rounded-[7px] text-[20px] font-medium mb-7">
+              {f.contactHeading}
+            </span>
+            <div className="flex flex-col gap-5 text-white text-[18px]">
+              <p>{f.contactEmail}</p>
+              <p>{f.contactPhone}</p>
+              <p className="whitespace-pre-line">{f.contactAddress}</p>
+            </div>
+          </div>
+
+          <div className="bg-[#292a32] rounded-[14px] p-[58px] flex items-center gap-5 w-[634px]">
             <input
               type="email"
               placeholder={f.newsletterPlaceholder}
-              className="border border-white rounded-[14px] px-[30px] py-5 text-[18px] text-white bg-transparent placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#b9ff66] w-[285px]"
+              className="border border-white rounded-[14px] px-[35px] py-[22px] text-[18px] text-white bg-transparent placeholder-white outline-none focus:ring-1 focus:ring-[#b9ff66] flex-1 max-w-[285px]"
             />
-            <button className="bg-[#b9ff66] text-[#191a23] font-medium rounded-[14px] px-[35px] py-5 text-[20px] hover:bg-[#a0e050] transition-colors whitespace-nowrap">
+            <button className="bg-[#b9ff66] text-black rounded-[14px] px-[35px] py-[22px] font-medium text-[20px] hover:bg-[#a0e050] transition-colors whitespace-nowrap">
               {f.newsletterButton}
             </button>
           </div>
         </div>
-      </div>
 
-      <hr className="border-white opacity-20 mb-[50px]" />
-
-      <div className="flex items-center gap-[40px] text-white text-[18px]">
-        <span>{f.copyright}</span>
-        <a href="#" className="underline hover:text-[#b9ff66] transition-colors">{f.privacyPolicy}</a>
+        {/* Bottom Row */}
+        <div className="mt-auto">
+          <hr className="border-white opacity-100 mb-[50px] mt-[66px]" />
+          <div className="flex items-center gap-[40px] text-white text-[18px]">
+            <span>{f.copyright}</span>
+            <a href="#" className="underline hover:text-[#b9ff66] transition-colors">{f.privacyPolicy}</a>
+          </div>
+        </div>
       </div>
     </footer>
   )

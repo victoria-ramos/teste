@@ -51,7 +51,7 @@ export const CONTENT = {
 
   process: {
     label: 'Our Working Process',
-    description: 'Step-by-Step Guide to Achieving Your Business Goals',
+    description: 'Step-by-Step Guide to\nAchieving Your Business Goals',
     steps: [
       {
         num: '01',
@@ -69,7 +69,7 @@ export const CONTENT = {
 
   team: {
     label: 'Team',
-    description: 'Meet the skilled and experienced team behind our successful digital marketing strategies',
+    description: 'Meet the skilled and experienced team\nbehind our successful digital marketing strategies',
     seeAll: 'See all team',
     linkedInAlt: 'LinkedIn',
     members: [
@@ -96,12 +96,12 @@ export const CONTENT = {
       {
         name: 'Brian Williams',
         role: 'Social Media Specialist',
-        bio: '4+ years of experience in social media marketing. Proficient in creating and scheduling content, analyzing metrics, and building online communities',
+        bio: '4+ years of experience in social media marketing. Proficient in creating and scheduling content, analyzing metrics, and building engagement',
       },
       {
         name: 'Sarah Kim',
         role: 'Content Creator',
-        bio: '2+ years of experience in content creation and copywriting. Skilled in creating compelling, SEO-optimized content for various industries',
+        bio: '2+ years of experience in writing and editing\nSkilled in creating compelling, SEO-optimized content for various industries',
       },
     ] as TeamMemberText[],
   },
@@ -116,24 +116,34 @@ export const CONTENT = {
       {
         text: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.',
         name: 'John Smith',
-        role: 'Marketing Director at ABC Corp',
+        role: 'Marketing Director at XYZ Corp',
       },
       {
-        text: 'Working with Positivus has been an incredible experience. Their team brought fresh ideas and a data-driven approach that dramatically improved our online visibility and ROI.',
-        name: 'Sarah Johnson',
-        role: 'CEO at TechStart Inc',
+        text: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.',
+        name: 'John Smith',
+        role: 'Marketing Director at XYZ Corp',
       },
       {
-        text: 'The results speak for themselves. Within 6 months of working with Positivus, we doubled our qualified leads and saw a 40% reduction in cost per acquisition.',
-        name: 'Michael Davis',
-        role: 'VP Growth at RetailCo',
+        text: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.',
+        name: 'John Smith',
+        role: 'Marketing Director at XYZ Corp',
+      },
+      {
+        text: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.',
+        name: 'John Smith',
+        role: 'Marketing Director at XYZ Corp',
+      },
+      {
+        text: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.',
+        name: 'John Smith',
+        role: 'Marketing Director at XYZ Corp',
       },
     ] as Testimonial[],
   },
 
   contact: {
     label: 'Contact Us',
-    description: "Connect with Us: Let's Discuss Your Digital Marketing Needs",
+    description: "Connect with Us: Let's Discuss Your\nDigital Marketing Needs",
     sayHi: 'Say Hi',
     getQuote: 'Get a Quote',
     form: {
