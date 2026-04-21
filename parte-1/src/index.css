@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #ffffff;
+    color: #191a23;
+    margin: 0;
+    padding: 0;
+  }
+}
