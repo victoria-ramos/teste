@@ -1,12 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { accentRgba } from '../constants';
-
-const BULLETS = [
-  '+40 horas de conteúdo direto ao ponto',
-  'Projetos com Python + IA desde o módulo 1',
-  'Suporte da comunidade com +20.000 alunos',
-  'Certificado reconhecido pelo mercado',
-];
+import { CONTENT } from '../content';
 
 const CHAR_SPEED = 22;
 const BULLET_DELAYS = [260, 580, 900, 1220];
@@ -19,7 +13,7 @@ interface BulletState {
 
 export default function TypewriterBullets({ visible }: { visible: boolean }) {
   const [bullets, setBullets] = useState<BulletState[]>(
-    BULLETS.map(() => ({ text: '', done: false, arrowVisible: false }))
+    CONTENT.bullets.map(() => ({ text: '', done: false, arrowVisible: false }))
   );
   const started = useRef(false);
 
@@ -27,10 +21,15 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
     if (!visible || started.current) return;
     started.current = true;
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setBullets(CONTENT.bullets.map((text) => ({ text, done: true, arrowVisible: true })));
+      return;
+    }
+
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     const intervals: ReturnType<typeof setInterval>[] = [];
 
-    BULLETS.forEach((full, bi) => {
+    CONTENT.bullets.forEach((full, bi) => {
       const tid = setTimeout(() => {
         setBullets((prev) => {
           const next = [...prev];
@@ -84,7 +83,7 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
     >
       {bullets.map((bullet, i) => (
         <li
-          key={BULLETS[i]}
+          key={CONTENT.bullets[i]}
           style={{
             display: 'flex',
             alignItems: 'flex-start',
@@ -111,7 +110,7 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 13,
-              color: '#94A3B8',
+              color: 'var(--color-text-secondary)',
               lineHeight: 1.6,
             }}
           >

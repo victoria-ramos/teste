@@ -1,3 +1,6 @@
+import { accentRgba } from '../constants';
+import { CONTENT } from '../content';
+
 interface Props {
   visible: boolean;
 }
@@ -9,8 +12,8 @@ export default function EyebrowBadge({ visible }: Props) {
         display: 'inline-flex',
         alignItems: 'center',
         gap: 8,
-        background: 'rgba(133,232,234,0.08)',
-        boxShadow: 'inset 0 0 0 1px rgba(133,232,234,0.22)',
+        background: accentRgba(0.08),
+        boxShadow: `inset 0 0 0 1px ${accentRgba(0.22)}`,
         borderRadius: 9999,
         padding: '5px 14px 5px 10px',
         marginBottom: 40,
@@ -40,13 +43,13 @@ export default function EyebrowBadge({ visible }: Props) {
           letterSpacing: '0.08em',
         }}
       >
-        turma aberta · vagas limitadas
+        {CONTENT.eyebrow}
       </span>
       <span
         style={{
           fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: 'rgba(133,232,234,0.55)',
+          color: accentRgba(0.55),
         }}
       >
         ↗

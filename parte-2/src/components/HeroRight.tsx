@@ -1,7 +1,8 @@
+import { CONTENT } from '../content';
+import { accentRgba } from '../constants';
 import Terminal from './Terminal';
 import ProgressCard from './ProgressCard';
 import GlassCard from './GlassCard';
-import { accentRgba } from '../constants';
 
 interface Props {
   visible: boolean;
@@ -55,16 +56,16 @@ export default function HeroRight({ visible }: Props) {
             letterSpacing: '0.06em',
           }}
         >
-          módulo 1
+          {CONTENT.floatingBadge.module}
         </span>
         <span
           style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 12,
-            color: '#94A3B8',
+            color: 'var(--color-text-secondary)',
           }}
         >
-          Python básico ao avançado
+          {CONTENT.floatingBadge.description}
         </span>
       </GlassCard>
 
@@ -110,19 +111,19 @@ export default function HeroRight({ visible }: Props) {
                 fontFamily: 'var(--font-sans)',
                 fontSize: 12,
                 fontWeight: 600,
-                color: '#F8FAFC',
+                color: 'var(--color-text-primary)',
               }}
             >
-              Certificado emitido
+              {CONTENT.certBadge.title}
             </span>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: 10,
-                color: '#475569',
+                color: 'var(--color-text-disabled)',
               }}
             >
-              reconhecido pelo mercado
+              {CONTENT.certBadge.subtitle}
             </span>
           </div>
         </GlassCard>

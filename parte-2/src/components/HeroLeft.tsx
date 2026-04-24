@@ -1,4 +1,5 @@
-import type { CSSProperties, MouseEvent } from 'react';
+import type { CSSProperties } from 'react';
+import { CONTENT } from '../content';
 import EyebrowBadge from './EyebrowBadge';
 import TypewriterBullets from './TypewriterBullets';
 import StatItem from './StatItem';
@@ -13,30 +14,6 @@ export default function HeroLeft({ visible }: Props) {
     transform: visible ? 'translateY(0)' : 'translateY(12px)',
     transition: `opacity 0.75s ease ${delay}ms, transform 0.75s ease ${delay}ms`,
   });
-
-  const handlePrimaryEnter = (e: MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.background = 'rgba(133,232,234,0.28)';
-    e.currentTarget.style.boxShadow =
-      'inset 0 1px 0 rgba(255,255,255,0.45), inset 0 0 0 1px rgba(133,232,234,0.50), 0 0 36px rgba(133,232,234,0.30), 0 4px 20px rgba(133,232,234,0.20)';
-  };
-
-  const handlePrimaryLeave = (e: MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.background = 'rgba(133,232,234,0.18)';
-    e.currentTarget.style.boxShadow =
-      'inset 0 1px 0 rgba(255,255,255,0.35), inset 0 0 0 1px rgba(133,232,234,0.35), 0 2px 16px rgba(133,232,234,0.18)';
-  };
-
-  const handleGhostEnter = (e: MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-    e.currentTarget.style.boxShadow =
-      'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.22)';
-  };
-
-  const handleGhostLeave = (e: MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-    e.currentTarget.style.boxShadow =
-      'inset 0 1px 0 rgba(255,255,255,0.14), inset 0 0 0 1px rgba(255,255,255,0.12)';
-  };
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -53,21 +30,21 @@ export default function HeroLeft({ visible }: Props) {
           fontFamily: 'var(--font-sans)',
           fontWeight: 500,
           fontSize: 'clamp(42px, 5vw, 72px)',
-          color: '#F8FAFC',
+          color: 'var(--color-text-primary)',
           lineHeight: 1.06,
           letterSpacing: '-0.04em',
           margin: '0 0 20px 0',
           ...({ textWrap: 'pretty' } as CSSProperties),
         }}
       >
-        Aprenda Python do zero e construa projetos reais com{' '}
+        {CONTENT.hero.titleStart}{' '}
         <span
           style={{
             color: 'var(--color-accent)',
             textShadow: '0 0 40px rgba(133,232,234,0.35)',
           }}
         >
-          IA
+          {CONTENT.hero.titleHighlight}
         </span>
       </h1>
 
@@ -77,15 +54,14 @@ export default function HeroLeft({ visible }: Props) {
           fontFamily: 'var(--font-sans)',
           fontSize: 18,
           fontWeight: 400,
-          color: '#94A3B8',
+          color: 'var(--color-text-secondary)',
           lineHeight: 1.65,
           margin: '0 0 36px 0',
           maxWidth: 480,
           ...({ textWrap: 'pretty' } as CSSProperties),
         }}
       >
-        O curso mais prático do Brasil para quem quer entrar em tecnologia sem
-        enrolação.
+        {CONTENT.hero.description}
       </p>
 
       <TypewriterBullets visible={visible} />
@@ -104,58 +80,17 @@ export default function HeroLeft({ visible }: Props) {
         <button
           type="button"
           className="btn-primary"
-          onClick={() => scrollTo('inscricao')}
-          style={{
-            fontFamily: 'var(--font-sans)',
-            fontWeight: 600,
-            fontSize: 15,
-            padding: '13px 28px',
-            borderRadius: 9999,
-            border: 'none',
-            cursor: 'pointer',
-            letterSpacing: '-0.01em',
-            whiteSpace: 'nowrap',
-            background: 'rgba(133,232,234,0.18)',
-            backdropFilter: 'blur(14px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(14px) saturate(180%)',
-            boxShadow:
-              'inset 0 1px 0 rgba(255,255,255,0.35), inset 0 0 0 1px rgba(133,232,234,0.35), 0 2px 16px rgba(133,232,234,0.18)',
-            color: '#fff',
-            textShadow: '0 1px 2px rgba(0,0,0,0.20)',
-            transition: 'background 0.18s ease, box-shadow 0.18s ease',
-          }}
-          onMouseEnter={handlePrimaryEnter}
-          onMouseLeave={handlePrimaryLeave}
+          onClick={() => scrollTo(CONTENT.hero.ctaPrimaryAnchor)}
         >
-          Quero começar agora
+          {CONTENT.hero.ctaPrimary}
         </button>
 
         <button
           type="button"
           className="btn-ghost"
-          onClick={() => scrollTo('conteudo')}
-          style={{
-            fontFamily: 'var(--font-sans)',
-            fontWeight: 500,
-            fontSize: 14,
-            padding: '11px 24px',
-            borderRadius: 6,
-            border: 'none',
-            cursor: 'pointer',
-            letterSpacing: '-0.01em',
-            whiteSpace: 'nowrap',
-            background: 'rgba(255,255,255,0.04)',
-            color: '#F8FAFC',
-            backdropFilter: 'blur(12px) saturate(140%)',
-            WebkitBackdropFilter: 'blur(12px) saturate(140%)',
-            boxShadow:
-              'inset 0 1px 0 rgba(255,255,255,0.14), inset 0 0 0 1px rgba(255,255,255,0.12)',
-            transition: 'background 0.18s ease, box-shadow 0.18s ease',
-          }}
-          onMouseEnter={handleGhostEnter}
-          onMouseLeave={handleGhostLeave}
+          onClick={() => scrollTo(CONTENT.hero.ctaSecondaryAnchor)}
         >
-          Ver o que vou aprender
+          {CONTENT.hero.ctaSecondary}
         </button>
       </div>
 
@@ -170,9 +105,14 @@ export default function HeroLeft({ visible }: Props) {
           flexWrap: 'wrap',
         }}
       >
-        <StatItem value="+20k" label="alunos ativos"  delay={520} />
-        <StatItem value="+40h" label="de conteúdo"    delay={640} />
-        <StatItem value="98%"  label="recomendam"     delay={760} />
+        {CONTENT.stats.map((stat, i) => (
+          <StatItem
+            key={stat.label}
+            value={stat.value}
+            label={stat.label}
+            delay={520 + i * 120}
+          />
+        ))}
       </div>
     </div>
   );

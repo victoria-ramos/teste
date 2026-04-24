@@ -1,22 +1,21 @@
 import { useState, useEffect } from 'react';
 import { ACCENT } from '../constants';
+import { CONTENT } from '../content';
 import GlassCard from './GlassCard';
 
-interface TerminalLine {
-  prompt: boolean;
-  text: string;
-  color?: string;
-  delay: number;
-}
+const LINE_META: Record<string, { color?: string; delay: number }> = {
+  install:  {                   delay: 0    },
+  env:      { color: ACCENT,    delay: 900  },
+  module:   { color: ACCENT,    delay: 1400 },
+  run:      {                   delay: 1900 },
+  loaded:   { color: '#94A3B8', delay: 2600 },
+  accuracy: { color: '#94A3B8', delay: 3100 },
+};
 
-const LINES: TerminalLine[] = [
-  { prompt: true,  text: 'pip install python-ia-course',  delay: 0 },
-  { prompt: false, text: '✓ Ambiente configurado',         color: ACCENT,    delay: 900 },
-  { prompt: false, text: '✓ Módulo 1 desbloqueado',        color: ACCENT,    delay: 1400 },
-  { prompt: true,  text: 'python projeto_ia.py',           delay: 1900 },
-  { prompt: false, text: '→ Modelo carregado em 0.4s',     color: '#94A3B8', delay: 2600 },
-  { prompt: false, text: '→ Resultado: 98.2% acurácia',    color: '#94A3B8', delay: 3100 },
-];
+const LINES = CONTENT.terminal.lines.map((line) => ({
+  ...line,
+  ...LINE_META[line.id],
+}));
 
 export default function Terminal() {
   const [step, setStep] = useState(0);
@@ -63,12 +62,12 @@ export default function Terminal() {
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 10,
-            color: '#334155',
+            color: 'var(--color-text-disabled)',
             letterSpacing: '0.08em',
             marginLeft: 6,
           }}
         >
-          terminal — projeto_ia.py
+          {CONTENT.terminal.title}
         </span>
       </div>
 
@@ -84,7 +83,7 @@ export default function Terminal() {
       >
         {LINES.slice(0, step).map((line) => (
           <div
-            key={line.text}
+            key={line.id}
             className="terminal-line"
             style={{
               fontFamily: 'var(--font-mono)',
@@ -97,7 +96,7 @@ export default function Terminal() {
             {line.prompt ? (
               <>
                 <span style={{ color: 'var(--color-accent)' }}>$</span>
-                <span style={{ color: '#F8FAFC' }}>{line.text}</span>
+                <span style={{ color: 'var(--color-text-primary)' }}>{line.text}</span>
               </>
             ) : (
               <span style={{ color: line.color }}>{line.text}</span>

@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react';
 import { accentRgba } from '../constants';
+import { CONTENT } from '../content';
 import GlassCard from './GlassCard';
 
-const MODULES = [
-  { name: 'Fundamentos Python',    pct: 100 },
-  { name: 'Estruturas de dados',   pct: 100 },
-  { name: 'APIs e automações',     pct: 60 },
-  { name: 'ML com scikit-learn',   pct: 0 },
-];
+const { heading, badge, modules, labelComplete, labelLocked } = CONTENT.progress;
 
 export default function ProgressCard() {
   const [mounted, setMounted] = useState(false);
@@ -26,10 +22,10 @@ export default function ProgressCard() {
             fontFamily: 'var(--font-sans)',
             fontSize: 13,
             fontWeight: 600,
-            color: '#F8FAFC',
+            color: 'var(--color-text-primary)',
           }}
         >
-          Progresso do curso
+          {heading}
         </span>
         <span
           style={{
@@ -38,19 +34,19 @@ export default function ProgressCard() {
             color: 'var(--color-accent)',
           }}
         >
-          módulo 3/8
+          {badge}
         </span>
       </div>
 
       {/* Modules */}
-      {MODULES.map((mod, i) => (
+      {modules.map((mod, i) => (
         <div key={mod.name} className="flex flex-col gap-1">
           <div className="flex justify-between">
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: 11,
-                color: mod.pct > 0 ? '#94A3B8' : '#334155',
+                color: mod.pct > 0 ? 'var(--color-text-secondary)' : 'var(--color-text-disabled)',
               }}
             >
               {mod.name}
@@ -59,14 +55,14 @@ export default function ProgressCard() {
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: 10,
-                color: mod.pct === 100 ? 'var(--color-accent)' : '#334155',
+                color: mod.pct === 100 ? 'var(--color-accent)' : 'var(--color-text-disabled)',
               }}
             >
               {mod.pct === 100
-                ? '✓ concluído'
+                ? labelComplete
                 : mod.pct > 0
                 ? `${mod.pct}%`
-                : 'bloqueado'}
+                : labelLocked}
             </span>
           </div>
           <div

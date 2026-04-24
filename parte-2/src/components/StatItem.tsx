@@ -19,6 +19,12 @@ export default function StatItem({ value, label, delay }: Props) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(true);
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setDisplay(target);
+        return;
+      }
+
       const duration = 1400;
       const start = performance.now();
 
@@ -70,7 +76,7 @@ export default function StatItem({ value, label, delay }: Props) {
         style={{
           fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: '#475569',
+          color: 'var(--color-text-tertiary)',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
         }}
