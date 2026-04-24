@@ -24,6 +24,7 @@ export default function HeroRight({ visible }: Props) {
       {/* Floating badge — top right */}
       <GlassCard
         variant="accent"
+        className="hero-badges"
         style={{
           position: 'absolute',
           top: -28,
@@ -78,6 +79,7 @@ export default function HeroRight({ visible }: Props) {
         {/* Cert badge — bottom left */}
         <GlassCard
           variant="dark"
+          className="hero-badges"
           style={{
             position: 'absolute',
             bottom: -20,

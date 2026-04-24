@@ -12,36 +12,9 @@ export default function Hero() {
 
   return (
     <main>
-      <section
-        aria-labelledby="hero-title"
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: '0 clamp(24px, 5vw, 64px)',
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: '0 auto',
-            width: '100%',
-            paddingTop: 96,
-            paddingBottom: 80,
-          }}
-        >
-          <div
-            className="hero-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 80,
-              alignItems: 'center',
-            }}
-          >
+      <section aria-labelledby="hero-title" className="hero-section">
+        <div className="hero-inner">
+          <div className="hero-grid">
             <HeroLeft visible={visible} />
             <div className="hero-right">
               <HeroRight visible={visible} />
