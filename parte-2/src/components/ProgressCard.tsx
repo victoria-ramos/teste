@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { accentRgba } from '../constants';
+import GlassCard from './GlassCard';
 
 const MODULES = [
   { name: 'Fundamentos Python',    pct: 100 },
@@ -17,19 +18,7 @@ export default function ProgressCard() {
   }, []);
 
   return (
-    <div
-      style={{
-        background: 'rgba(255,255,255,0.03)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.07)',
-        borderRadius: 12,
-        padding: '20px 24px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 14,
-      }}
-    >
+    <GlassCard style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 14 }}>
       {/* Header */}
       <div className="flex justify-between items-center">
         <span
@@ -101,6 +90,6 @@ export default function ProgressCard() {
           </div>
         </div>
       ))}
-    </div>
+    </GlassCard>
   );
 }

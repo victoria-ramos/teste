@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ACCENT } from '../constants';
+import GlassCard from './GlassCard';
 
 interface TerminalLine {
   prompt: boolean;
@@ -28,17 +29,13 @@ export default function Terminal() {
   }, []);
 
   return (
-    <div
-      style={{
-        background: 'rgba(255,255,255,0.03)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08), 0 0 60px rgba(133,232,234,0.05)',
-        borderRadius: 12,
-        overflow: 'hidden',
-        width: '100%',
-      }}
-    >
+    <GlassCard style={{
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
+      boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08), 0 0 60px rgba(133,232,234,0.05)',
+      overflow: 'hidden',
+      width: '100%',
+    }}>
       {/* Titlebar */}
       <div
         style={{
@@ -121,6 +118,6 @@ export default function Terminal() {
           </span>
         )}
       </div>
-    </div>
+    </GlassCard>
   );
 }

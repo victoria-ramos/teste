@@ -1,5 +1,6 @@
 import Terminal from './Terminal';
 import ProgressCard from './ProgressCard';
+import GlassCard from './GlassCard';
 import { accentRgba } from '../constants';
 
 interface Props {
@@ -20,16 +21,13 @@ export default function HeroRight({ visible }: Props) {
       }}
     >
       {/* Floating badge — top right */}
-      <div
+      <GlassCard
+        variant="accent"
         style={{
           position: 'absolute',
           top: -28,
           right: 0,
           zIndex: 2,
-          background: accentRgba(0.08),
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          boxShadow: `inset 0 0 0 1px ${accentRgba(0.20)}`,
           borderRadius: 8,
           padding: '10px 16px',
           display: 'flex',
@@ -68,7 +66,7 @@ export default function HeroRight({ visible }: Props) {
         >
           Python básico ao avançado
         </span>
-      </div>
+      </GlassCard>
 
       <Terminal />
 
@@ -77,16 +75,13 @@ export default function HeroRight({ visible }: Props) {
         <ProgressCard />
 
         {/* Cert badge — bottom left */}
-        <div
+        <GlassCard
+          variant="dark"
           style={{
             position: 'absolute',
             bottom: -20,
             left: -20,
             zIndex: 2,
-            background: 'rgba(8,8,8,0.88)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.10)',
             borderRadius: 10,
             padding: '12px 18px',
             display: 'flex',
@@ -130,7 +125,7 @@ export default function HeroRight({ visible }: Props) {
               reconhecido pelo mercado
             </span>
           </div>
-        </div>
+        </GlassCard>
       </div>
     </div>
   );
