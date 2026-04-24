@@ -1,48 +1,45 @@
-import { useState, useEffect } from 'react';
+import type { CSSProperties, MouseEvent } from 'react';
 import EyebrowBadge from './EyebrowBadge';
 import TypewriterBullets from './TypewriterBullets';
 import StatItem from './StatItem';
 
-export default function HeroLeft() {
-  const [visible, setVisible] = useState(false);
+interface Props {
+  visible: boolean;
+}
 
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 80);
-    return () => clearTimeout(t);
-  }, []);
-
-  const fade = (delay: number): React.CSSProperties => ({
+export default function HeroLeft({ visible }: Props) {
+  const fade = (delay: number): CSSProperties => ({
     opacity: visible ? 1 : 0,
     transform: visible ? 'translateY(0)' : 'translateY(12px)',
     transition: `opacity 0.75s ease ${delay}ms, transform 0.75s ease ${delay}ms`,
   });
 
-  const handlePrimaryEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handlePrimaryEnter = (e: MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.style.background = 'rgba(133,232,234,0.28)';
     e.currentTarget.style.boxShadow =
       'inset 0 1px 0 rgba(255,255,255,0.45), inset 0 0 0 1px rgba(133,232,234,0.50), 0 0 36px rgba(133,232,234,0.30), 0 4px 20px rgba(133,232,234,0.20)';
-    e.currentTarget.style.transform = 'translateY(-2px)';
   };
 
-  const handlePrimaryLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handlePrimaryLeave = (e: MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.style.background = 'rgba(133,232,234,0.18)';
     e.currentTarget.style.boxShadow =
       'inset 0 1px 0 rgba(255,255,255,0.35), inset 0 0 0 1px rgba(133,232,234,0.35), 0 2px 16px rgba(133,232,234,0.18)';
-    e.currentTarget.style.transform = 'translateY(0)';
   };
 
-  const handleGhostEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleGhostEnter = (e: MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
     e.currentTarget.style.boxShadow =
       'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.22)';
-    e.currentTarget.style.transform = 'translateY(-1px)';
   };
 
-  const handleGhostLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleGhostLeave = (e: MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
     e.currentTarget.style.boxShadow =
       'inset 0 1px 0 rgba(255,255,255,0.14), inset 0 0 0 1px rgba(255,255,255,0.12)';
-    e.currentTarget.style.transform = 'translateY(0)';
+  };
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -50,6 +47,7 @@ export default function HeroLeft() {
       <EyebrowBadge visible={visible} />
 
       <h1
+        id="hero-title"
         style={{
           ...fade(80),
           fontFamily: 'var(--font-sans)',
@@ -59,13 +57,13 @@ export default function HeroLeft() {
           lineHeight: 1.06,
           letterSpacing: '-0.04em',
           margin: '0 0 20px 0',
-          textWrap: 'pretty' as never,
+          ...({ textWrap: 'pretty' } as CSSProperties),
         }}
       >
         Aprenda Python do zero e construa projetos reais com{' '}
         <span
           style={{
-            color: '#85E8EA',
+            color: 'var(--color-accent)',
             textShadow: '0 0 40px rgba(133,232,234,0.35)',
           }}
         >
@@ -83,7 +81,7 @@ export default function HeroLeft() {
           lineHeight: 1.65,
           margin: '0 0 36px 0',
           maxWidth: 480,
-          textWrap: 'pretty' as never,
+          ...({ textWrap: 'pretty' } as CSSProperties),
         }}
       >
         O curso mais prático do Brasil para quem quer entrar em tecnologia sem
@@ -104,6 +102,9 @@ export default function HeroLeft() {
         }}
       >
         <button
+          type="button"
+          className="btn-primary"
+          onClick={() => scrollTo('inscricao')}
           style={{
             fontFamily: 'var(--font-sans)',
             fontWeight: 600,
@@ -121,17 +122,18 @@ export default function HeroLeft() {
               'inset 0 1px 0 rgba(255,255,255,0.35), inset 0 0 0 1px rgba(133,232,234,0.35), 0 2px 16px rgba(133,232,234,0.18)',
             color: '#fff',
             textShadow: '0 1px 2px rgba(0,0,0,0.20)',
-            transition: 'all 0.18s ease',
+            transition: 'background 0.18s ease, box-shadow 0.18s ease',
           }}
           onMouseEnter={handlePrimaryEnter}
           onMouseLeave={handlePrimaryLeave}
-          onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.96)')}
-          onMouseUp={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
         >
           Quero começar agora
         </button>
 
         <button
+          type="button"
+          className="btn-ghost"
+          onClick={() => scrollTo('conteudo')}
           style={{
             fontFamily: 'var(--font-sans)',
             fontWeight: 500,
@@ -148,12 +150,10 @@ export default function HeroLeft() {
             WebkitBackdropFilter: 'blur(12px) saturate(140%)',
             boxShadow:
               'inset 0 1px 0 rgba(255,255,255,0.14), inset 0 0 0 1px rgba(255,255,255,0.12)',
-            transition: 'all 0.18s ease',
+            transition: 'background 0.18s ease, box-shadow 0.18s ease',
           }}
           onMouseEnter={handleGhostEnter}
           onMouseLeave={handleGhostLeave}
-          onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.96)')}
-          onMouseUp={(e) => (e.currentTarget.style.transform = 'translateY(-1px)')}
         >
           Ver o que vou aprender
         </button>

@@ -1,9 +1,11 @@
+import type { CSSProperties } from 'react';
+
 interface Props {
   mouse: { x: number; y: number };
 }
 
 export default function Background({ mouse }: Props) {
-  const orbStyle = (speed: number, extra: React.CSSProperties): React.CSSProperties => ({
+  const orbStyle = (speed: number, extra: CSSProperties): CSSProperties => ({
     position: 'absolute',
     borderRadius: '50%',
     pointerEvents: 'none',

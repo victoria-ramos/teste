@@ -81,3 +81,35 @@ html, body, #root {
 .dot-pulse {
   animation: dot-pulse 2s ease-in-out infinite;
 }
+
+/* Hero responsive */
+@media (max-width: 1024px) {
+  .hero-grid { gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .hero-right { margin-top: 0; }
+}
+
+/* Button :hover/:active via CSS */
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-primary:active { transform: scale(0.96); }
+.btn-ghost:hover   { transform: translateY(-1px); }
+.btn-ghost:active  { transform: scale(0.96); }
+
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

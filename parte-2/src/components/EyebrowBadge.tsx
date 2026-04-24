@@ -26,8 +26,8 @@ export default function EyebrowBadge({ visible }: Props) {
           width: 6,
           height: 6,
           borderRadius: '50%',
-          background: '#85E8EA',
-          boxShadow: '0 0 8px #85E8EA',
+          background: 'var(--color-accent)',
+          boxShadow: '0 0 8px var(--color-accent)',
           display: 'inline-block',
           flexShrink: 0,
         }}
@@ -36,7 +36,7 @@ export default function EyebrowBadge({ visible }: Props) {
         style={{
           fontFamily: 'var(--font-mono)',
           fontSize: 11,
-          color: '#85E8EA',
+          color: 'var(--color-accent)',
           letterSpacing: '0.08em',
         }}
       >

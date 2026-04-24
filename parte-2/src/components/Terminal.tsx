@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-const ACCENT = '#85E8EA';
+import { ACCENT } from '../constants';
 
 interface TerminalLine {
   prompt: boolean;
@@ -34,7 +33,7 @@ export default function Terminal() {
         background: 'rgba(255,255,255,0.03)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        boxShadow: `inset 0 0 0 1px rgba(255,255,255,0.08), 0 0 60px rgba(133,232,234,0.05)`,
+        boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08), 0 0 60px rgba(133,232,234,0.05)',
         borderRadius: 12,
         overflow: 'hidden',
         width: '100%',
@@ -51,9 +50,9 @@ export default function Terminal() {
           background: 'rgba(255,255,255,0.02)',
         }}
       >
-        {['#EF4444', '#F59E0B', ACCENT].map((c, i) => (
+        {['#EF4444', '#F59E0B', ACCENT].map((c) => (
           <div
-            key={i}
+            key={c}
             style={{
               width: 9,
               height: 9,
@@ -86,9 +85,9 @@ export default function Terminal() {
           minHeight: 180,
         }}
       >
-        {LINES.slice(0, step).map((line, i) => (
+        {LINES.slice(0, step).map((line) => (
           <div
-            key={i}
+            key={line.text}
             className="terminal-line"
             style={{
               fontFamily: 'var(--font-mono)',
@@ -100,7 +99,7 @@ export default function Terminal() {
           >
             {line.prompt ? (
               <>
-                <span style={{ color: ACCENT }}>$</span>
+                <span style={{ color: 'var(--color-accent)' }}>$</span>
                 <span style={{ color: '#F8FAFC' }}>{line.text}</span>
               </>
             ) : (
@@ -115,7 +114,7 @@ export default function Terminal() {
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 14,
-              color: ACCENT,
+              color: 'var(--color-accent)',
             }}
           >
             ▋

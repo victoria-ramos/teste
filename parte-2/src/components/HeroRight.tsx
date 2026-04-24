@@ -1,7 +1,6 @@
 import Terminal from './Terminal';
 import ProgressCard from './ProgressCard';
-
-const ACCENT = '#85E8EA';
+import { accentRgba } from '../constants';
 
 interface Props {
   visible: boolean;
@@ -27,10 +26,10 @@ export default function HeroRight({ visible }: Props) {
           top: -28,
           right: 0,
           zIndex: 2,
-          background: 'rgba(133,232,234,0.08)',
+          background: accentRgba(0.08),
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          boxShadow: 'inset 0 0 0 1px rgba(133,232,234,0.20)',
+          boxShadow: `inset 0 0 0 1px ${accentRgba(0.20)}`,
           borderRadius: 8,
           padding: '10px 16px',
           display: 'flex',
@@ -44,8 +43,8 @@ export default function HeroRight({ visible }: Props) {
             width: 5,
             height: 5,
             borderRadius: '50%',
-            background: ACCENT,
-            boxShadow: `0 0 6px ${ACCENT}`,
+            background: 'var(--color-accent)',
+            boxShadow: '0 0 6px var(--color-accent)',
             display: 'inline-block',
             flexShrink: 0,
           }}
@@ -54,7 +53,7 @@ export default function HeroRight({ visible }: Props) {
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: ACCENT,
+            color: 'var(--color-accent)',
             letterSpacing: '0.06em',
           }}
         >
@@ -100,8 +99,8 @@ export default function HeroRight({ visible }: Props) {
               width: 32,
               height: 32,
               borderRadius: 8,
-              background: 'rgba(133,232,234,0.10)',
-              boxShadow: 'inset 0 0 0 1px rgba(133,232,234,0.22)',
+              background: accentRgba(0.10),
+              boxShadow: `inset 0 0 0 1px ${accentRgba(0.22)}`,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

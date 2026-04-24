@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-
-const ACCENT = '#85E8EA';
+import { accentRgba } from '../constants';
 
 const BULLETS = [
   '+40 horas de conteúdo direto ao ponto',
@@ -28,10 +27,11 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
     if (!visible || started.current) return;
     started.current = true;
 
-    BULLETS.forEach((full, bi) => {
-      const startDelay = BULLET_DELAYS[bi];
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    const intervals: ReturnType<typeof setInterval>[] = [];
 
-      setTimeout(() => {
+    BULLETS.forEach((full, bi) => {
+      const tid = setTimeout(() => {
         setBullets((prev) => {
           const next = [...prev];
           next[bi] = { ...next[bi], arrowVisible: true };
@@ -39,7 +39,7 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
         });
 
         let charIndex = 0;
-        const interval = setInterval(() => {
+        const iid = setInterval(() => {
           charIndex++;
           setBullets((prev) => {
             const next = [...prev];
@@ -48,7 +48,7 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
           });
 
           if (charIndex >= full.length) {
-            clearInterval(interval);
+            clearInterval(iid);
             setBullets((prev) => {
               const next = [...prev];
               next[bi] = { ...next[bi], done: true };
@@ -56,8 +56,17 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
             });
           }
         }, CHAR_SPEED);
-      }, startDelay);
+
+        intervals.push(iid);
+      }, BULLET_DELAYS[bi]);
+
+      timeouts.push(tid);
     });
+
+    return () => {
+      timeouts.forEach(clearTimeout);
+      intervals.forEach(clearInterval);
+    };
   }, [visible]);
 
   return (
@@ -75,7 +84,7 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
     >
       {bullets.map((bullet, i) => (
         <li
-          key={i}
+          key={BULLETS[i]}
           style={{
             display: 'flex',
             alignItems: 'flex-start',
@@ -83,11 +92,10 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
             minHeight: '1.6em',
           }}
         >
-          {/* Arrow */}
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              color: ACCENT,
+              color: 'var(--color-accent)',
               fontSize: 12,
               marginTop: 3,
               flexShrink: 0,
@@ -99,7 +107,6 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
             →
           </span>
 
-          {/* Text + cursor */}
           <span
             style={{
               fontFamily: 'var(--font-mono)',
@@ -116,7 +123,7 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
                   display: 'inline-block',
                   width: 1,
                   height: '1em',
-                  background: ACCENT,
+                  background: 'var(--color-accent)',
                   verticalAlign: 'text-bottom',
                   marginLeft: 1,
                 }}
@@ -129,8 +136,8 @@ export default function TypewriterBullets({ visible }: { visible: boolean }) {
                   width: 6,
                   height: 6,
                   borderRadius: '50%',
-                  background: 'rgba(133,232,234,0.5)',
-                  boxShadow: '0 0 6px #85E8EA',
+                  background: accentRgba(0.5),
+                  boxShadow: '0 0 6px var(--color-accent)',
                   verticalAlign: 'middle',
                   marginLeft: 6,
                 }}

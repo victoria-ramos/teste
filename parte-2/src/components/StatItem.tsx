@@ -58,7 +58,7 @@ export default function StatItem({ value, label, delay }: Props) {
           fontFamily: 'var(--font-sans)',
           fontSize: 30,
           fontWeight: 800,
-          color: '#85E8EA',
+          color: 'var(--color-accent)',
           letterSpacing: '-0.04em',
           lineHeight: 1,
           fontVariantNumeric: 'tabular-nums',

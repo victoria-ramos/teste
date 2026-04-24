@@ -11,52 +11,44 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      style={{
-        position: 'relative',
-        zIndex: 10,
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        padding: '0 clamp(24px, 5vw, 64px)',
-      }}
-    >
-      <div
+    <main>
+      <section
+        aria-labelledby="hero-title"
         style={{
-          maxWidth: 1200,
-          margin: '0 auto',
-          width: '100%',
-          paddingTop: 96,
-          paddingBottom: 80,
+          position: 'relative',
+          zIndex: 10,
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: '0 clamp(24px, 5vw, 64px)',
         }}
       >
         <div
-          className="hero-grid"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 80,
-            alignItems: 'center',
+            maxWidth: 1200,
+            margin: '0 auto',
+            width: '100%',
+            paddingTop: 96,
+            paddingBottom: 80,
           }}
         >
-          <HeroLeft />
-          <div className="hero-right">
-            <HeroRight visible={visible} />
+          <div
+            className="hero-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: 80,
+              alignItems: 'center',
+            }}
+          >
+            <HeroLeft visible={visible} />
+            <div className="hero-right">
+              <HeroRight visible={visible} />
+            </div>
           </div>
         </div>
-      </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .hero-right {
-            display: none !important;
-          }
-        }
-      `}</style>
-    </section>
+      </section>
+    </main>
   );
 }

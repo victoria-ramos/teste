@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-const ACCENT = '#85E8EA';
+import { accentRgba } from '../constants';
 
 const MODULES = [
   { name: 'Fundamentos Python',    pct: 100 },
@@ -47,7 +46,7 @@ export default function ProgressCard() {
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: ACCENT,
+            color: 'var(--color-accent)',
           }}
         >
           módulo 3/8
@@ -56,7 +55,7 @@ export default function ProgressCard() {
 
       {/* Modules */}
       {MODULES.map((mod, i) => (
-        <div key={i} className="flex flex-col gap-1">
+        <div key={mod.name} className="flex flex-col gap-1">
           <div className="flex justify-between">
             <span
               style={{
@@ -71,7 +70,7 @@ export default function ProgressCard() {
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: 10,
-                color: mod.pct === 100 ? ACCENT : '#334155',
+                color: mod.pct === 100 ? 'var(--color-accent)' : '#334155',
               }}
             >
               {mod.pct === 100
@@ -94,7 +93,7 @@ export default function ProgressCard() {
                 height: '100%',
                 width: mounted ? `${mod.pct}%` : '0%',
                 background:
-                  mod.pct === 100 ? ACCENT : 'rgba(133,232,234,0.40)',
+                  mod.pct === 100 ? 'var(--color-accent)' : accentRgba(0.40),
                 borderRadius: 9999,
                 transition: `width 1s ease ${i * 120}ms`,
               }}
